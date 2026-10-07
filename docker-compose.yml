@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: riskpulse
+      POSTGRES_USER: riskpulse
+      POSTGRES_PASSWORD: riskpulse
+    ports: ["5432:5432"]
+    volumes: ["riskpulse_pg:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U riskpulse"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  ganache:
+    image: trufflesuite/ganache:v7.9.2
+    command: ["--host", "0.0.0.0", "--chain.chainId", "1337", "--wallet.totalAccounts", "10"]
+    ports: ["8545:8545"]
+volumes:
+  riskpulse_pg:
+

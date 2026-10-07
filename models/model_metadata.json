@@ -1,0 +1,24 @@
+{
+  "dataset": "IEEE-CIS Fraud Detection",
+  "source_files": "train_transaction.csv + train_identity.csv",
+  "training_rows": 301744,
+  "testing_rows": 75437,
+  "fraud_rate_train": 0.033784,
+  "fraud_rate_test": 0.035394,
+  "split_strategy": "chronological 80/10/10; champion selected on validation PR-AUC and refit on first 90%",
+  "champion_model": "Random Forest Tuned",
+  "decision_threshold": 0.7,
+  "candidate_models": [
+    "Baseline (Most Frequent)",
+    "Logistic Regression",
+    "Random Forest Base",
+    "Extra Trees Classifier",
+    "Random Forest Tuned"
+  ],
+  "feature_count": 39,
+  "production_training_rows": 339462,
+  "validation_rows": 37718,
+  "final_testing_rows": 37719,
+  "selection_metric": "validation PR-AUC",
+  "final_test_is_untouched": true
+}
